@@ -1,4 +1,4 @@
-import { languagesList } from '../languages'
+import { languagesList } from '@contentpi/core'
 
 export function isArray(v: unknown): boolean {
   return Array.isArray(v)
