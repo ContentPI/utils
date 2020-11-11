@@ -52,6 +52,7 @@
   "dependencies": {
     "@contentpi/core": "^1.0.0",
     "@types/slug": "0.9.1",
-    "dot-object": "^2.1.4"
+    "dot-object": "^2.1.4",
+    "slug": "^4.0.2"
   }
 }

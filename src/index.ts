@@ -1,3 +1,4 @@
+export * from './frontend'
 export * from './is'
 export * from './object'
 export * from './security'
