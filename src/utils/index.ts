@@ -1,5 +1,3 @@
-import { isLanguage, isDefined, isString } from '../is'
-
 const rsAstralRange = '\\ud800-\\udfff'
 const rsComboMarksRange = '\\u0300-\\u036f'
 const reComboHalfMarksRange = '\\ufe20-\\ufe2f'
