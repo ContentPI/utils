@@ -1,7 +1,7 @@
 import { isString } from '../is'
 import { words } from '../utils'
 
-export function capitalize(str: any): string {
+export function capitalize(str: string): string {
   if (!isString(str)) {
     return ''
   }

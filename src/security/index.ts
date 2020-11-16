@@ -11,7 +11,7 @@ export function encrypt(str: string): string {
 }
 
 export function getBase64(value: string): any {
-  let buffer = false
+  let buffer
 
   if (isString(value)) {
     buffer = Buffer.from(value, 'base64').toString('ascii')

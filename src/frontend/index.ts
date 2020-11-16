@@ -4,7 +4,11 @@ import slug from 'slug'
 // Utils
 import { isDefined, isString } from '../is'
 
-export function buildUrl(params: any[]): any {
+interface iAdd {
+  if: (condition: boolean) => string
+}
+
+export function buildUrl(params: string[]): string {
   return params.filter(v => v).join('/')
 }
 
@@ -16,15 +20,15 @@ export function cx(...classes: string[]): string {
   return classes.join(' ').trim()
 }
 
-export function isFirstRender(items: any): boolean {
+export function isFirstRender(items: any[] | any): boolean {
   return !isDefined(items) || items.length === 0 || Object.keys(items).length === 0
 }
 
-export function waitFor(time: number): Promise<any> {
+export function waitFor(time: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, time * 1000))
 }
 
-export function add(cssRule: any): any {
+export function add(cssRule: string | any): iAdd {
   return {
     if: (condition: boolean) => {
       if (condition && cssRule) {

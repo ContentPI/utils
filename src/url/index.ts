@@ -1,10 +1,10 @@
 import { isBrowser, isLanguage, isString, isDefined } from '../is'
 
 export function getLocation(req?: any): any {
-  return typeof window !== 'undefined' ? window.location : { pathname: req && req.url }
+  return isDefined(window) ? window.location : { pathname: req && req.url }
 }
 
-export function getParams(url: any, index = 0): any {
+export function getParams(url: string, index = 0): string | string[] {
   if (!url) {
     url = getLocation().pathname
   }
@@ -26,17 +26,19 @@ export function getParams(url: any, index = 0): any {
         index += 1
       }
 
-      return isDefined(params[index]) ? params[index] : false
+      if (isDefined(params[index])) {
+        return params[index]
+      }
     }
 
     return params
   }
 
-  return null
+  return ''
 }
 
 export const getCurrentLanguage = (url?: string, defaultLanguage = 'en-US') => {
-  const params = getParams(url)
+  const params = getParams(url || '')
   return params && isLanguage(params[0]) ? params[0] : defaultLanguage
 }
 
@@ -70,7 +72,7 @@ export function redirectTo(url = '/', includeLanguage?: any): void {
   }
 }
 
-export function getParamsFromUrl(mapParams: string[], baseUrl?: any): any {
+export function getParamsFromUrl(mapParams: string[], baseUrl?: string): any {
   let pathname = ''
 
   if (isBrowser() && !baseUrl) {

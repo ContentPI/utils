@@ -4,11 +4,20 @@ import dot from 'dot-object'
 // Utils
 import { isBrowser, isObject, isDefined, isJson, isArray } from '../is'
 
+interface iData {
+  _DEBUG: string
+}
+
+interface iNode {
+  key: string
+  value: string
+}
+
 export function cloneObject(o: any): any {
   return { ...o }
 }
 
-export function getDebug(data: any): any {
+export function getDebug(data: iData): any {
   if (data._DEBUG) {
     return JSON.parse(data._DEBUG)
   }
@@ -40,10 +49,10 @@ export function pick(key: string, obj: any): string {
   return dot.pick(key, obj) || key
 }
 
-export function buildContentJson(nodes: any, raw?: boolean) {
+export function buildContentJson(nodes: iNode[], raw?: boolean) {
   const rows: any = {}
 
-  forEach(nodes, (node: any) => {
+  forEach(nodes, (node: iNode) => {
     rows[node.key] = node.value
   })
 
@@ -71,7 +80,7 @@ export function getStorageItem(key: string, returnJson = true): any {
     return null
   }
 
-  const item: any = localStorage.getItem(key)
+  const item = localStorage.getItem(key) || ''
 
   if (returnJson && isJson(item)) {
     return JSON.parse(item)
@@ -94,13 +103,13 @@ export function setStorageItem(key: string, value: any): any {
   return null
 }
 
-export function removeStorageItem(key: string): any {
+export function removeStorageItem(key: string): void {
   if (isBrowser() && key && localStorage) {
     localStorage.removeItem(key)
   }
 }
 
-export function clearStorage(): any {
+export function clearStorage(): void {
   if (isBrowser() && localStorage) {
     localStorage.clear()
   }

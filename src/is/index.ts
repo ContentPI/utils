@@ -20,7 +20,7 @@ export function isFunction(v: any): boolean {
   return typeof v === 'function'
 }
 
-export function isJson(str: any): any {
+export function isJson(str: string): boolean | any {
   if (!str || str === null) {
     return false
   }
