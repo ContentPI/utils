@@ -63,7 +63,7 @@ describe('#isJson', () => {
   })
 
   it('should be false if a variable is not a valid json', () => {
-    expect(isJson(null)).toBe(false)
+    expect(isJson('')).toBe(false)
     expect(isJson('bar')).toBe(false)
   })
 })
