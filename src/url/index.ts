@@ -1,7 +1,7 @@
 import { isBrowser, isLanguage, isString, isDefined } from '../is'
 
 export function getLocation(req?: any): any {
-  return isDefined(window) ? window.location : { pathname: req && req.url }
+  return typeof window !== 'undefined' ? window.location : { pathname: req && req.url }
 }
 
 export function getParams(url: string, index = 0): string | string[] {
