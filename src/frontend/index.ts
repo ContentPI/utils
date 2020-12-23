@@ -8,6 +8,12 @@ interface iAdd {
   if: (condition: boolean) => string
 }
 
+interface iProps {
+  cpn: string
+  ccn: string
+  data: string[]
+}
+
 export function buildUrl(params: string[]): string {
   return params.filter(v => v).join('/')
 }
@@ -48,4 +54,14 @@ export function add(cssRule: string | any): iAdd {
       return ''
     }
   }
+}
+
+export function classNamesGenerator({ cpn, ccn, data }: iProps): string {
+  const classList = [cpn, ccn]
+
+  data.forEach(key => {
+    classList.push(`${ccn}-${key}`)
+  })
+
+  return classList.join(' ')
 }
