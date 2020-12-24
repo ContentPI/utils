@@ -60,7 +60,9 @@ export function classNamesGenerator({ cpn, ccn, data }: iProps): string {
   const classList = [cpn, ccn]
 
   data.forEach(key => {
-    classList.push(`${ccn}-${key}`)
+    if (key) {
+      classList.push(`${ccn}-${key}`)
+    }
   })
 
   return classList.join(' ')
