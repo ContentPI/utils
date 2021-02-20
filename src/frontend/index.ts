@@ -9,7 +9,6 @@ interface iAdd {
 }
 
 interface iProps {
-  cpn: string
   ccn: string
   data: string[]
 }
