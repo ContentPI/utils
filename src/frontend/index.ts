@@ -55,7 +55,7 @@ export function add(cssRule: string | any): iAdd {
   }
 }
 
-export function classNamesGenerator({ ccn, data }: iProps): string {
+export function cxGenerator({ ccn, data }: iProps): string {
   const classList = [ccn]
 
   data.forEach(key => {
