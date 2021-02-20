@@ -59,7 +59,7 @@ export function cxGenerator({ ccn, data }: iProps): string {
   const classList = [ccn]
 
   data.forEach(key => {
-    if (key) {
+    if (key !== '') {
       classList.push(`${ccn}-${key}`)
     }
   })
